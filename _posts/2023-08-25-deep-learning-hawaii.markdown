@@ -2,6 +2,8 @@
 layout: post
 title:  "Deep Learning Hawaii"
 date:   2023-08-25 16:52:07
+categories: deep-learning-hawaii
+tags: deep-learning-hawaii
 image: /images/deep_learning_hawaii.jpg
 ---
 # The Beginning
