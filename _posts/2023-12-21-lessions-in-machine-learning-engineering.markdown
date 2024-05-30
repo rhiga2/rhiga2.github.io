@@ -2,7 +2,7 @@
 layout: post
 title:  "Lessons in Machine Learning"
 date:   2023-12-21 16:52:07
-categories: machine-learning
+categories: personal
 tags:  machine-learning
 image: /images/lessons_in_machine_learning.png
 published: true

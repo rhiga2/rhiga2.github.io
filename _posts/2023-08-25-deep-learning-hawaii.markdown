@@ -2,9 +2,9 @@
 layout: post
 title:  "AI Hawaii"
 date:   2023-08-25 16:52:07
-categories: ai-hawaii, machine-learning
-tags: ai-hawaii, machine-learning
-image: /images/AIHawaii.png
+categories: personal
+tags: ai-hawaii machine-learning
+image: /images/AI_Hawaii.jpg
 ---
 # The Beginning
 In November 2022, I created a monthly AI meetup group based in Honolulu, HI called AI Hawaii. Before moving back to Hawaii in 2022, I lived in the Bay Area where paper reading groups, research talks, and data professional panels were so ubiquitous that it was impossible to not feel left behind by the lightspeed development of AI. Upon moving back to Honolulu, I struggled to find an active AI and deep learning community. And so I built one.
