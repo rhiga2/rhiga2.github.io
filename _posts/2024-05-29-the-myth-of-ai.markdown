@@ -5,7 +5,7 @@ date:   2024-05-29 16:52:07
 categories: book-review
 tags: machine-learning book-review
 image: /images/myth_of_ai.jpg
-published: true
+published: false
 ---
 **Rating: 2/5**
 
