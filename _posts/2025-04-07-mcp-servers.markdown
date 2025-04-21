@@ -75,9 +75,15 @@ To test the MCP server, we use Claude desktop. We let Claude know about our MCP 
 }
 {% endhighlight %}
 
-We then load up Claude desktop and check the tools are available from our server
+We then load up Claude desktop and check the tools are available from our server. This can be verified by prompting Claude with `list tools`:
+
+![Alt Text](/images/available_tools.png)
+
+After verifying that tools are available, we can test the tools by prompting Claude. In this example, I ask Claude to list files in the current directory:
+![Alt Text](/images/tool_usage.png)
+
+# Conclusion
+Although the example we tested and created in this blog is simple, MCP is powerful not due to any advanced, innovative discoveries, but due to its ability to standardize communication between LLM agents and services. Check out [Anthropics docs][mcp-intro] for a more in-depth discussion on MCPs.
 
 
-[jekyll]:      http://jekyllrb.com
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-help]: https://github.com/jekyll/jekyll-help
+[mcp_intro]: https://modelcontextprotocol.io/introduction
