@@ -5,7 +5,7 @@ date:   2023-12-21 16:52:07
 categories: personal
 tags:  machine-learning
 image: /images/lessons_in_machine_learning.png
-published: false
+published: true
 ---
 In 1976, a British statistician, George Box, wrote "all models are wrong, but some are useful." Nowhere is this more apparent than in machine learning, where models are not just wrong but often unreliable despite their immense usefulness. If we look towards other disciplines such as civil engineering or traditional software engineering, engineers in these fields work in the reliablility domains of 99.9999999% such that the likelihood of their systems failing is guaranteed to be less than the chance of a large meteorite hitting Earth tomorrow. 
 
