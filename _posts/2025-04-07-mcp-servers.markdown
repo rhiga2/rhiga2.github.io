@@ -76,10 +76,10 @@ To test the MCP server, we use Claude desktop. We let Claude know about our MCP 
 {% endhighlight %}
 
 We then load up Claude desktop and check the tools are available from our server. This can be verified by prompting Claude with `list tools`:
-<img src="/images/available_tools.png" alt="Available tools in Claude" width="200"/>
+<img src="/images/available_tools.png" alt="Available tools in Claude" width="24em"/>
 
 After verifying that tools are available, we can test the tools by prompting Claude. In this example, I ask Claude to list files in the current directory:
-<img src="/images/tool_usage.png" alt="Tool usage in Claude" width="200"/>
+<img src="/images/tool_usage.png" alt="Tool usage in Claude" width="24em"/>
 
 # Conclusion
 Although the example we tested and created in this blog is simple, MCP is powerful not due to any advanced techniques or innovative discoveries, but due to its ability to standardize communication between LLM agents and services. Standardization has been a driving force behind all major technnologies ranging from ancient languages to the internet, and will continue to be a driving force behind future technological ecosystems. In particular, a standard in communication between agents and services is a key component to Web 4.0, a vision of an internet that can not just connects and serves information in webpages but can also reason and transform the information that it serves. MCP is a major step towards this vision. 
