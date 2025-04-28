@@ -4,7 +4,7 @@ title:  "The Hello World of MCP"
 date:   2025-04-07
 categories: beginner
 tags: beginner
-image: /images/pic03.jpg
+image: /images/mcp_cover.png
 published: true
 ---
 
