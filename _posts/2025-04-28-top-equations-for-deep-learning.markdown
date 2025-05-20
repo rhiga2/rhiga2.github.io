@@ -7,7 +7,6 @@ tags: beginner
 image: /images/equations-cover.jpg
 published: true
 ---
-
 # Unifying Equations and Inequalities 
 Physics is a broad field that encompasses and describes phenonmenon from the diffusion of molecules in a glass of water to the motion of planets in solar systems. Despite the vastness of the field, there are only a small set of equations and inequalities that are used to summarize the entirety the different fields such as Maxwell's equations for electromagnetism, the Navier-Stokes equations for fluid dynamics, and $E=mc^2$ for relativity to name a few. The same is true for deep learning and AI where only a few equations and inequalities are needed to understand the majority of progress in the field. In this post, I will summarize the theoretical minimum needed to understand deep learning and where it's headed in the future.  
 
