@@ -12,13 +12,13 @@ Physics is a broad field that encompasses and describes phenonmenon from the dif
 
 # Bayes' Theorem
 There are two interpretations of probability: frequentist and Bayesian. Frequentist probability is based on the idea that probability is the long-term frequency of an event occurring in repeated trials. For example, if you flip a coin 100 times and it lands on heads 55 times, the frequentist probability of heads is 0.55. Bayesian probability, on the other hand, is based on the idea that probability is a measure of belief or certainty about an event. Bayesian probability is often used in situations where we have sparse or limited data as opposed to frequentist probability which requires a large amount of data to have any accuracy guarantees. 
-The most important equation in Bayesian probability is Bayes' theorem, which dictates how to update our beliefs based on new evidence. Our initial belief pre-update is called the prior, for example our belief that event $A$ will occur can be described as $P(A)$. Given new evidence from event $B$, we update our belief about $A$ to the posterior $P(A|B)$, which is the probability of event A given event B. The equation for Bayes' theorem shows how we can convert our prior to posterior:
+The most important equation in Bayesian probability is Bayes' theorem, which dictates how to update our beliefs based on new evidence. Our initial belief pre-update is called the prior, for example our belief that event $A$ will occur can be described as $P(A)$. Given new evidence from event $B$, we update our belief about $A$ to the posterior $P(A\vert B)$, which is the probability of event A given event B. The equation for Bayes' theorem shows how we can convert our prior to posterior:
 
 $$
 P(A|B) = \frac{P(B|A)P(A)}{P(B)} P(A)
 $$
 
-Another important quantity in Bayes' theorem is the likelihood $P(B|A)$. This quantity describes how likely we are to observe the eviedence or data $B$ given our belief about $A$. In frequentist probability, the likelihood is often used instead of the posterior to estimate parameters in a deep learning model as we will see in the next section. 
+Another important quantity in Bayes' theorem is the likelihood $P(B\vert A)$. This quantity describes how likely we are to observe the eviedence or data $B$ given our belief about $A$. In frequentist probability, the likelihood is often used instead of the posterior to estimate parameters in a deep learning model as we will see in the next section. 
 
 # Minimizing Cost = Negative Log Likelihood
 Maximum likelihood estimation (MLE) is a common frequentist method for estimating parameters in a probabilistic model. The idea behind MLE is to find the parameters that maximize the likelihood of observing the data that we know to be true. In other words, we want to find the parameters that make the observed data most likely. 
@@ -28,7 +28,7 @@ $$
 J(\theta) = -\log p_\theta(Y|X) = -\sum_{i=1}^N \log p_\theta(y^{(i)}|x^{(i)})
 $$
 
-where $X$ is the data we observe, $Y$ is the true labels, and $p_\theta(y^{(i)}|x^{(i)})$ is the likelihood of observing the true label $y^{(i)}$ given $x^{(i)}$. Note that this setup assumes that the observations are IID and most common parameter estimation method in supervised and self-supervised cases. 
+where $X$ is the data we observe, $Y$ is the true labels, and $p_\theta(y^{(i)}\vert x^{(i)})$ is the likelihood of observing the true label $y^{(i)}$ given $x^{(i)}$. Note that this setup assumes that the observations are IID and most common parameter estimation method in supervised and self-supervised cases. 
 In binary classification problems for example, we can model the likelihood of observing $x^{(i)}$ given the true label $y^{(i)}$ as a Bernoulli distribution where the probability of observing $y^{(i)} = 1$ given $x^{(i)}$ is the output of the of our deep learning model $f_\theta(x^{(i)})$. We can then express the likelihood as:
 
 $$
