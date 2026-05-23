@@ -1,13 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const pageTitle = "Tag Index";
-const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
-const tags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
+
+const posts = await getCollection('blog');
+const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
 ---
-<BaseLayout pageTitle={pageTitle}>
-  <div class="tags">
-    {tags.map((tag) => (
-      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-    ))}
+
+<BaseLayout title="Tags — Ryley Higa">
+  <h1 class="text-3xl font-bold mb-6">Tags</h1>
+  <div class="flex flex-wrap gap-3">
+    {
+      allTags.map((tag) => (
+        <a
+          href={`/tags/${tag}/`}
+          class="border border-gray-200 rounded px-3 py-1.5 text-sm text-gray-700 hover:border-gray-400 transition-colors"
+        >
+          {tag}
+        </a>
+      ))
+    }
   </div>
 </BaseLayout>

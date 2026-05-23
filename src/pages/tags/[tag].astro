@@ -1,26 +1,37 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
-  const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
-
-  const uniqueTags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
-
-  return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post: any) => post.frontmatter.tags.includes(tag));
-    return {
-      params: { tag },
-      props: { posts: filteredPosts },
-    };
-  });
+  const posts = await getCollection('blog');
+  const allTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return allTags.map((tag) => ({
+    params: { tag },
+    props: {
+      posts: posts.filter((p) => p.data.tags.includes(tag)),
+    },
+  }));
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
-<BaseLayout pageTitle={tag}>
-  <p>Posts tagged with {tag}</p>
-  <ul>
-    {posts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+
+<BaseLayout title={`#${tag} — Ryley Higa`}>
+  <h1 class="text-3xl font-bold mb-2">#{tag}</h1>
+  <p class="text-gray-500 mb-8">{posts.length} post{posts.length !== 1 ? 's' : ''}</p>
+  <ul class="flex flex-col gap-6">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}/`} class="block group">
+            <h2 class="font-bold text-gray-900 group-hover:underline">
+              {post.data.title}
+            </h2>
+            <p class="text-sm text-gray-500 mt-1">{post.data.description}</p>
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </BaseLayout>
