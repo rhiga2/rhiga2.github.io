@@ -1,11 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
-const pageTitle = "Home Page";
----
-<BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} />
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-</BaseLayout>
 
+const services = [
+  {
+    title: 'Machine Learning',
+    href: '/work/',
+    desc: 'Production-minded model work, experiments, and evaluation loops.',
+  },
+  {
+    title: 'Data Products',
+    href: '/work/',
+    desc: 'Interfaces and workflows that make complex systems easier to reason about.',
+  },
+  {
+    title: 'Astro Notes',
+    href: '/blog/',
+    desc: 'A small learning archive for web experiments and technical writing.',
+  },
+];
+---
+
+<BaseLayout title="Ryley Higa" description="Senior machine learning engineer.">
+  <section class="py-16">
+    <h1 class="text-4xl font-bold mb-4">Hi, I'm Ryley 👋</h1>
+    <p class="text-lg text-gray-500 mb-8 max-w-xl">
+      Senior machine learning engineer in Honolulu, HI. I build reliable
+      systems from unreliable AI.
+    </p>
+    <div class="flex gap-3 mb-8">
+      <a
+        href="/resume/"
+        class="bg-gray-900 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-gray-700 transition-colors"
+      >
+        View Resume →
+      </a>
+      <a
+        href="/work/"
+        class="border border-gray-300 px-4 py-2 rounded text-sm text-gray-700 hover:border-gray-500 transition-colors"
+      >
+        See Work
+      </a>
+    </div>
+    <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  </section>
+
+  <section class="py-8 border-t border-gray-200">
+    <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+      Focus areas
+    </h2>
+    <div class="flex flex-col divide-y divide-gray-100">
+      {
+        services.map(({ title, href, desc }) => (
+          <a href={href} class="flex justify-between items-center py-4 group">
+            <div>
+              <span class="font-bold text-gray-900">{title}</span>
+              <p class="text-sm text-gray-500 mt-0.5">{desc}</p>
+            </div>
+            <span class="text-gray-400 group-hover:text-gray-900 transition-colors">
+              →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
