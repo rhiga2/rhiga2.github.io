@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { resume } from '../data/resume';
+---
+
+<BaseLayout title="Resume — Ryley Higa">
+  <div class="max-w-2xl">
+    <h1 class="text-3xl font-bold">{resume.name}</h1>
+    <p class="text-gray-500 mt-1">{resume.title} · {resume.location}</p>
+    <p class="text-sm text-gray-500">{resume.email}</p>
+    <p class="mt-4 text-gray-700">{resume.summary}</p>
+
+    <section class="mt-10">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+        Experience
+      </h2>
+      {
+        resume.experience.map((job) => (
+          <div class="mb-6">
+            <div class="flex justify-between items-baseline">
+              <h3 class="font-bold">{job.role}</h3>
+              <span class="text-sm text-gray-500">
+                {job.start}–{job.end}
+              </span>
+            </div>
+            <p class="text-gray-500 text-sm">{job.company}</p>
+            <ul class="mt-2 list-disc list-inside text-sm text-gray-700 space-y-1">
+              {job.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+        Education
+      </h2>
+      {
+        resume.education.map((edu) => (
+          <div class="flex justify-between items-baseline">
+            <div>
+              <h3 class="font-bold">{edu.degree}</h3>
+              <p class="text-gray-500 text-sm">{edu.school}</p>
+            </div>
+            <span class="text-sm text-gray-500">{edu.year}</span>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+        Skills
+      </h2>
+      {
+        resume.skills.map(({ category, items }) => (
+          <div class="mb-4">
+            <span class="text-sm font-semibold text-gray-700">{category}</span>
+            <div class="flex flex-wrap gap-2 mt-1">
+              {items.map((item) => (
+                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-0.5 rounded">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+        Links
+      </h2>
+      <div class="flex gap-4">
+        {
+          resume.socials.map(({ platform, url }) => (
+            <a
+              href={url}
+              class="text-sm text-gray-500 hover:text-gray-900 underline transition-colors"
+            >
+              {platform}
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>
