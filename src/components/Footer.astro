@@ -1,16 +1,24 @@
 ---
-import Social from './Social.astro';
 ---
-<style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-</style>
 
-<footer>
-  <Social platform="linkedin" username="in/ryleyhiga" />
-  <Social platform="github" username="rhiga2" />
-  <Social platform="instagram" username="helloimhiga" />
+<footer class="max-w-4xl mx-auto px-4 py-8 mt-16 border-t border-gray-200">
+  <div class="flex flex-col sm:flex-row justify-between gap-4">
+    <div>
+      <a href="/" class="font-bold text-gray-900">Ryley</a>
+      <p class="text-sm text-gray-500 mt-1">
+        Creating useful systems, learning in public.
+      </p>
+    </div>
+    <div class="flex gap-4 text-sm text-gray-500">
+      <a href="https://github.com/rhiga2" class="hover:text-gray-900 transition-colors">
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/ryleyhiga" class="hover:text-gray-900 transition-colors">
+        LinkedIn
+      </a>
+      <a href="https://instagram.com/helloimhiga" class="hover:text-gray-900 transition-colors">
+        Instagram
+      </a>
+    </div>
+  </div>
 </footer>
