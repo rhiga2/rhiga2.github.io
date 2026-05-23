@@ -1,40 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const pageTitle = "About Me";
-
-const identity = {
-  firstName: "Ryley",
-  country: "United States",
-  occupation: "Senior Machine Learning Engineer",
-  hobbies: ["volleyball", "crossfit"],
-};
-
-const skills = ["python", "machine learning", "deep learning"];
-
-const happy = true;
-const finished = false;
-const goal = 3;
-
-const skillColor = "crimson";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-   <ul>
-        <li>My name is {identity.firstName}.</li>
-        <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-        {identity.hobbies.length >= 2 &&
-            <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-        }
-    </ul>
-    <p>My skills are:</p>
-    <ul>
-        {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-
-    {happy && <p>I am happy to be learning Astro!</p>}
-
-    {finished && <p>I finished this tutorial!</p>}
-
-    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+<BaseLayout title="About — Ryley Higa" description="Senior ML engineer in Honolulu.">
+  <h1 class="text-3xl font-bold mb-6">About</h1>
+  <div class="max-w-2xl space-y-4 text-gray-700">
+    <p>
+      I'm Ryley, a senior machine learning engineer living in Honolulu, HI. I
+      spend most of my time building production ML systems, evaluation loops,
+      and the data pipelines that feed them.
+    </p>
+    <p>
+      Outside of work I play volleyball, do CrossFit, and tinker with Astro.
+      This site is part notebook, part portfolio — a place to write up things I
+      learn and share projects I've shipped.
+    </p>
+    <p>
+      Find me on <a href="https://github.com/rhiga2" class="underline hover:text-gray-900">GitHub</a>
+      or <a href="https://linkedin.com/in/ryleyhiga" class="underline hover:text-gray-900">LinkedIn</a>.
+    </p>
+  </div>
 </BaseLayout>
