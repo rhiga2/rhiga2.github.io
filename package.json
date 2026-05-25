@@ -20,5 +20,9 @@
     "astro": "^6.3.3",
     "preact": "^10.29.2",
     "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
   }
 }
