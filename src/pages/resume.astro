@@ -7,7 +7,7 @@ import { resume } from '../data/resume';
   <div class="max-w-2xl">
     <h1 class="text-3xl font-bold">{resume.name}</h1>
     <p class="text-gray-500 mt-1">{resume.title} · {resume.location}</p>
-    <p class="text-sm text-gray-500">{resume.email}</p>
+    <p class="text-sm text-gray-500">{resume.email} · {resume.phone}</p>
     <p class="mt-4 text-gray-700">{resume.summary}</p>
 
     <section class="mt-10">
@@ -69,6 +69,21 @@ import { resume } from '../data/resume';
           </div>
         ))
       }
+    </section>
+
+    <section class="mt-8 border-t border-gray-200 pt-8">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+        Others
+      </h2>
+      <ul class="space-y-2">
+        {
+          resume.others.map(({ label, value }) => (
+            <li class="text-sm text-gray-700">
+              <span class="font-semibold text-gray-900">{label}:</span> {value}
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     <section class="mt-8 border-t border-gray-200 pt-8">
