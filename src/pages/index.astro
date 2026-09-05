@@ -1,68 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
-
-const services = [
-  {
-    title: 'Machine Learning',
-    href: '/work/',
-    desc: 'Production-minded model work, experiments, and evaluation loops.',
-  },
-  {
-    title: 'Data Products',
-    href: '/work/',
-    desc: 'Interfaces and workflows that make complex systems easier to reason about.',
-  },
-  {
-    title: 'Astro Notes',
-    href: '/blog/',
-    desc: 'A small learning archive for web experiments and technical writing.',
-  },
-];
 ---
 
 <BaseLayout title="Ryley Higa" description="Senior machine learning engineer.">
-  <section class="py-16">
-    <h1 class="text-4xl font-bold mb-4">Hi, I'm Ryley 👋</h1>
-    <p class="text-lg text-gray-500 mb-8 max-w-xl">
-      Senior machine learning engineer in Honolulu, HI. I build reliable
-      systems from unreliable AI.
-    </p>
-    <div class="flex gap-3 mb-8">
-      <a
-        href="/resume/"
-        class="bg-gray-900 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-gray-700 transition-colors"
-      >
-        View Resume →
-      </a>
-      <a
-        href="/work/"
-        class="border border-gray-300 px-4 py-2 rounded text-sm text-gray-700 hover:border-gray-500 transition-colors"
-      >
-        See Work
-      </a>
-    </div>
-    <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-  </section>
-
-  <section class="py-8 border-t border-gray-200">
-    <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-      Focus areas
-    </h2>
-    <div class="flex flex-col divide-y divide-gray-100">
-      {
-        services.map(({ title, href, desc }) => (
-          <a href={href} class="flex justify-between items-center py-4 group">
-            <div>
-              <span class="font-bold text-gray-900">{title}</span>
-              <p class="text-sm text-gray-500 mt-0.5">{desc}</p>
-            </div>
-            <span class="text-gray-400 group-hover:text-gray-900 transition-colors">
-              →
-            </span>
-          </a>
-        ))
-      }
+  <section class="relative overflow-hidden rounded-2xl my-8">
+    <div class="absolute inset-0 bg-gray-900"></div>
+    <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 560">
+      <defs>
+        <linearGradient id="wave-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#6366f1" stop-opacity="0.6" />
+          <stop offset="50%" stop-color="#a855f7" stop-opacity="0.4" />
+          <stop offset="100%" stop-color="#ec4899" stop-opacity="0.6" />
+        </linearGradient>
+        <linearGradient id="wave-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#818cf8" stop-opacity="0.4" />
+          <stop offset="50%" stop-color="#c084fc" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#f472b6" stop-opacity="0.4" />
+        </linearGradient>
+        <linearGradient id="wave-grad-3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.3" />
+          <stop offset="50%" stop-color="#9333ea" stop-opacity="0.2" />
+          <stop offset="100%" stop-color="#db2777" stop-opacity="0.3" />
+        </linearGradient>
+      </defs>
+      <path class="wave wave-1" fill="url(#wave-grad-1)" d="M0,320 C240,220 480,380 720,300 C960,220 1200,360 1440,280 L1440,560 L0,560 Z" />
+      <path class="wave wave-2" fill="url(#wave-grad-2)" d="M0,360 C200,280 440,420 720,340 C1000,260 1240,400 1440,320 L1440,560 L0,560 Z" />
+      <path class="wave wave-3" fill="url(#wave-grad-3)" d="M0,400 C180,340 420,460 720,380 C1020,300 1260,440 1440,360 L1440,560 L0,560 Z" />
+    </svg>
+    <div class="relative z-10 px-8 py-20 md:py-28">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-sm">
+        Hi, I'm Ryley
+      </h1>
+      <p class="text-lg md:text-xl text-white/85 mb-8 max-w-xl">
+        Senior machine learning engineer in Honolulu, HI. I build reliable
+        systems from unreliable AI.
+      </p>
+      <div class="flex gap-3">
+        <a
+          href="/resume/"
+          class="bg-white text-gray-900 px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/90 transition-colors shadow-sm"
+        >
+          View Resume →
+        </a>
+        <a
+          href="/blog/"
+          class="border border-white/40 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-white/10 transition-colors backdrop-blur-sm"
+        >
+          Read Blog
+        </a>
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  @keyframes drift-1 {
+    0%   { d: path("M0,320 C240,220 480,380 720,300 C960,220 1200,360 1440,280 L1440,560 L0,560 Z"); }
+    50%  { d: path("M0,280 C240,360 480,240 720,340 C960,380 1200,260 1440,320 L1440,560 L0,560 Z"); }
+    100% { d: path("M0,320 C240,220 480,380 720,300 C960,220 1200,360 1440,280 L1440,560 L0,560 Z"); }
+  }
+  @keyframes drift-2 {
+    0%   { d: path("M0,360 C200,280 440,420 720,340 C1000,260 1240,400 1440,320 L1440,560 L0,560 Z"); }
+    50%  { d: path("M0,340 C200,420 440,280 720,380 C1000,420 1240,300 1440,360 L1440,560 L0,560 Z"); }
+    100% { d: path("M0,360 C200,280 440,420 720,340 C1000,260 1240,400 1440,320 L1440,560 L0,560 Z"); }
+  }
+  @keyframes drift-3 {
+    0%   { d: path("M0,400 C180,340 420,460 720,380 C1020,300 1260,440 1440,360 L1440,560 L0,560 Z"); }
+    50%  { d: path("M0,380 C180,440 420,340 720,420 C1020,460 1260,360 1440,400 L1440,560 L0,560 Z"); }
+    100% { d: path("M0,400 C180,340 420,460 720,380 C1020,300 1260,440 1440,360 L1440,560 L0,560 Z"); }
+  }
+  .wave-1 { animation: drift-1 7s ease-in-out infinite; }
+  .wave-2 { animation: drift-2 9s ease-in-out infinite; }
+  .wave-3 { animation: drift-3 11s ease-in-out infinite; }
+</style>
