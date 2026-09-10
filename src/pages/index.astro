@@ -1,32 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 ---
 
 <BaseLayout title="Ryley Higa" description="Senior machine learning engineer.">
   <section class="relative overflow-hidden rounded-2xl my-8">
-    <div class="absolute inset-0 bg-gray-900"></div>
-    <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 560">
-      <defs>
-        <linearGradient id="wave-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#6366f1" stop-opacity="0.6" />
-          <stop offset="50%" stop-color="#a855f7" stop-opacity="0.4" />
-          <stop offset="100%" stop-color="#ec4899" stop-opacity="0.6" />
-        </linearGradient>
-        <linearGradient id="wave-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#818cf8" stop-opacity="0.4" />
-          <stop offset="50%" stop-color="#c084fc" stop-opacity="0.3" />
-          <stop offset="100%" stop-color="#f472b6" stop-opacity="0.4" />
-        </linearGradient>
-        <linearGradient id="wave-grad-3" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.3" />
-          <stop offset="50%" stop-color="#9333ea" stop-opacity="0.2" />
-          <stop offset="100%" stop-color="#db2777" stop-opacity="0.3" />
-        </linearGradient>
-      </defs>
-      <path class="wave wave-1" fill="url(#wave-grad-1)" d="M0,320 C240,220 480,380 720,300 C960,220 1200,360 1440,280 L1440,560 L0,560 Z" />
-      <path class="wave wave-2" fill="url(#wave-grad-2)" d="M0,360 C200,280 440,420 720,340 C1000,260 1240,400 1440,320 L1440,560 L0,560 Z" />
-      <path class="wave wave-3" fill="url(#wave-grad-3)" d="M0,400 C180,340 420,460 720,380 C1020,300 1260,440 1440,360 L1440,560 L0,560 Z" />
-    </svg>
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 animate-gradient"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(255,255,255,0.15),transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.1),transparent_50%)]"></div>
     <div class="relative z-10 px-8 py-20 md:py-28">
       <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-sm">
         Hi, I'm Ryley
@@ -51,25 +36,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <section class="py-8 border-t border-gray-200">
+    <h2 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+      Recent posts
+    </h2>
+    <ul class="flex flex-col gap-6">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`} class="block group">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="font-bold text-gray-900 group-hover:underline">
+                  {post.data.title}
+                </h3>
+                <time class="text-xs text-gray-400 whitespace-nowrap">
+                  {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </time>
+              </div>
+              <p class="text-sm text-gray-500 mt-1">{post.data.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </BaseLayout>
 
 <style>
-  @keyframes drift-1 {
-    0%   { d: path("M0,320 C240,220 480,380 720,300 C960,220 1200,360 1440,280 L1440,560 L0,560 Z"); }
-    50%  { d: path("M0,280 C240,360 480,240 720,340 C960,380 1200,260 1440,320 L1440,560 L0,560 Z"); }
-    100% { d: path("M0,320 C240,220 480,380 720,300 C960,220 1200,360 1440,280 L1440,560 L0,560 Z"); }
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
-  @keyframes drift-2 {
-    0%   { d: path("M0,360 C200,280 440,420 720,340 C1000,260 1240,400 1440,320 L1440,560 L0,560 Z"); }
-    50%  { d: path("M0,340 C200,420 440,280 720,380 C1000,420 1240,300 1440,360 L1440,560 L0,560 Z"); }
-    100% { d: path("M0,360 C200,280 440,420 720,340 C1000,260 1240,400 1440,320 L1440,560 L0,560 Z"); }
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
   }
-  @keyframes drift-3 {
-    0%   { d: path("M0,400 C180,340 420,460 720,380 C1020,300 1260,440 1440,360 L1440,560 L0,560 Z"); }
-    50%  { d: path("M0,380 C180,440 420,340 720,420 C1020,460 1260,360 1440,400 L1440,560 L0,560 Z"); }
-    100% { d: path("M0,400 C180,340 420,460 720,380 C1020,300 1260,440 1440,360 L1440,560 L0,560 Z"); }
-  }
-  .wave-1 { animation: drift-1 7s ease-in-out infinite; }
-  .wave-2 { animation: drift-2 9s ease-in-out infinite; }
-  .wave-3 { animation: drift-3 11s ease-in-out infinite; }
 </style>

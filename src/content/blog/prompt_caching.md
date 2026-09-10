@@ -30,8 +30,8 @@ Prompt caching on the Anthropic API works on an exact prefix match basis. The ca
 
 This sounds straightforward--always put static content before dynamic content--until you realize how easy it is to accidentally break the prefix. Here are some reasons why prompt caching can fail unexpectedly:
 
-### Non-deterministic serialization of tool name or structured data
-If you're injecting tool definitions or structured data such as retrieved knowledge, the serialization order has to be stable. Python dicts are insertion-ordered in modern Python, but if you're building them from a database query or merging configs, the order can vary across requests. One shuffled tool_name and you start to incur the cost of full cache misses.
+### Non-deterministic serialization of tool definitions or structured data
+If you're injecting tool definitions or structured data such as retrieved knowledge, the serialization order has to be stable. Python dicts are insertion-ordered in modern Python, but if you're building them from a database query or merging configs, the order can vary across requests. One shuffled tool name and you start to incur the cost of full cache misses.
 
 ### Long tool calls can break 5m TTL
 At our organization, we define many agents that work in the background without human input. Since these ambient agents take one request per session, a 5m TTL is often sufficient to keep the cache warm. With this setup, however, we sometimes observe cache reads suddenly reset to zero in the middle of an agent run. The culprit: long-running data-heavy tool calls that exceed the 5-minute TTL cause the prefix to expire prematurely. Based on our usage, a 1-hour TTL is overkill, so we ensure tool call latency remains well below 5 minutes by paginating large data retrievals. The agent receives an initial data chunk and subsequent chunks are fetched, offloaded to the filesystem, and processed by the agent if needed via filesystem tools.
